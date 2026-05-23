@@ -1,51 +1,211 @@
 "use client";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { MessageCircle, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useInView } from "@/app/hooks/useInView";
+
+type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactSection() {
   const { ref: headRef, inView: headIn } = useInView();
-  const { ref: bodyRef, inView: bodyIn } = useInView();
+  const { ref: formRef, inView: formIn } = useInView();
+
+  const [status, setStatus] = useState<Status>("idle");
+  const [form, setForm] = useState({
+    name: "",
+    station: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "590d7b9a-74b7-4072-a51a-3c8eec9de9f1",
+          subject: `【kowairo】導入相談：${form.station}`,
+          from_name: form.name,
+          name: form.name,
+          station: form.station,
+          email: form.email,
+          phone: form.phone || "未入力",
+          message: form.message || "（本文なし）",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setForm({ name: "", station: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="contact" className="section-padding bg-white">
       <div className="container-narrow">
+        {/* Heading */}
         <div
           ref={headRef as React.RefObject<HTMLDivElement>}
           className={`text-center mb-12 transition-all duration-700 ${headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <span className="section-label">CONTACT</span>
           <h2 className="section-title">
-            料金・導入について
-            <span className="text-teal">お気軽にご相談ください</span>
+            導入相談・
+            <span className="text-teal">お問い合わせ</span>
           </h2>
           <p className="section-subtitle max-w-xl mx-auto">
-            現在、ステーションの規模や状況に合わせて
+            ステーションの規模や状況に合わせて個別にご提案します。
             <br />
-            個別にご提案させていただいています。
-            <br />
-            まずはお気軽にお問い合わせください。
+            まずはお気軽にご相談ください。通常2営業日以内にご返信します。
           </p>
         </div>
 
+        {/* Form */}
         <div
-          ref={bodyRef as React.RefObject<HTMLDivElement>}
-          className={`transition-all duration-700 ${bodyIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          ref={formRef as React.RefObject<HTMLDivElement>}
+          className={`max-w-2xl mx-auto transition-all duration-700 ${formIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="bg-gray-50 rounded-3xl p-8 md:p-12 text-center max-w-2xl mx-auto">
-            <a
-              href="mailto:info@idenshi.co.jp?subject=kowairo 導入相談"
-              className="inline-flex items-center justify-center gap-2 bg-teal text-white font-black px-10 py-4 rounded-xl text-lg hover:bg-teal-dark transition-colors shadow-lg mb-6"
-            >
-              <MessageCircle size={20} />
-              導入相談する
-              <ArrowRight size={18} />
-            </a>
+          {status === "success" ? (
+            <div className="bg-teal/5 border border-teal/20 rounded-3xl p-12 text-center">
+              <CheckCircle size={48} className="text-teal mx-auto mb-4" />
+              <h3 className="text-xl font-black text-navy mb-2">送信が完了しました</h3>
+              <p className="text-body text-sm">
+                お問い合わせありがとうございます。
+                <br />
+                担当者より2営業日以内にご連絡いたします。
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-6 text-teal text-sm font-medium underline underline-offset-2"
+              >
+                別の内容で送る
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 md:p-10 space-y-5">
+              {/* 氏名 */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  お名前 <span className="text-coral text-xs">必須</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="山田 太郎"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                />
+              </div>
 
-            <p className="text-body text-sm">
-              <span className="font-medium">info@idenshi.co.jp</span>
-              　｜　通常2営業日以内にご返信します
-            </p>
-          </div>
+              {/* ステーション名 */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  ステーション名 <span className="text-coral text-xs">必須</span>
+                </label>
+                <input
+                  type="text"
+                  name="station"
+                  value={form.station}
+                  onChange={handleChange}
+                  required
+                  placeholder="〇〇訪問看護ステーション"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                />
+              </div>
+
+              {/* メール */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  メールアドレス <span className="text-coral text-xs">必須</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="taro@example.com"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                />
+              </div>
+
+              {/* 電話番号 */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  電話番号 <span className="text-gray-400 text-xs font-normal">任意</span>
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="03-0000-0000"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                />
+              </div>
+
+              {/* メッセージ */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  ご相談内容 <span className="text-gray-400 text-xs font-normal">任意</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="気になること、現場の状況など何でもご記入ください。"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition resize-none"
+                />
+              </div>
+
+              {/* Error */}
+              {status === "error" && (
+                <div className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
+                  <AlertCircle size={16} className="flex-shrink-0" />
+                  送信に失敗しました。時間をおいて再度お試しください。
+                </div>
+              )}
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full flex items-center justify-center gap-2 bg-teal text-white font-black py-4 rounded-xl text-base hover:bg-teal-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
+              >
+                {status === "loading" ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    送信中…
+                  </>
+                ) : (
+                  <>
+                    <MessageCircle size={18} />
+                    導入相談する
+                  </>
+                )}
+              </button>
+
+              <p className="text-center text-gray-400 text-xs">
+                送信後、2営業日以内に info@idenshi.co.jp よりご返信します。
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </section>
