@@ -47,13 +47,13 @@ export default function Home() {
         <TestimonialsSection />
         <Wave from={CREAM} to={WHITE} />
         <FounderSection />
-        <ContactSection />
         <Wave from={WHITE} to={CREAM} />
         <FlowSection />
         <Wave from={CREAM} to={WHITE} />
         <FAQSection />
         <Wave from={WHITE} to={TEAL} />
         <CTASection />
+        <ContactSection />
       </main>
       <Footer />
     </>
