@@ -9,7 +9,7 @@ import FlowSection from "@/components/FlowSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import FounderSection from "@/components/FounderSection";
-import PricingSection from "@/components/PricingSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const CREAM = "#FAF8F4";
@@ -47,7 +47,7 @@ export default function Home() {
         <TestimonialsSection />
         <Wave from={CREAM} to={WHITE} />
         <FounderSection />
-        <PricingSection />
+        <ContactSection />
         <Wave from={WHITE} to={CREAM} />
         <FlowSection />
         <Wave from={CREAM} to={WHITE} />
