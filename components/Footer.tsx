@@ -3,8 +3,8 @@ import Image from "next/image";
 const footerLinks = [
   { label: "特徴", href: "#features" },
   { label: "使い方", href: "#how-it-works" },
-  { label: "料金", href: "#pricing" },
   { label: "よくある質問", href: "#faq" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
 export default function Footer() {
