@@ -1,5 +1,5 @@
 "use client";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useInView } from "@/app/hooks/useInView";
 
 export default function CTASection() {
@@ -27,21 +27,11 @@ export default function CTASection() {
           ステーションの規模・状況に合わせて個別にご提案します。
         </p>
 
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 bg-white text-teal font-black px-8 py-4 rounded-xl text-lg hover:bg-gray-50 transition-colors shadow-lg"
-          >
-            <MessageCircle size={20} />
-            導入相談する
-            <ArrowRight size={18} />
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 border-2 border-white/60 text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-colors"
-          >
-            フォームに進む
+        {/* Scroll hint */}
+        <div className="flex justify-center mb-12">
+          <a href="#contact" className="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors">
+            <span className="text-sm">フォームはこちら</span>
+            <ChevronDown size={20} className="animate-bounce" />
           </a>
         </div>
 
