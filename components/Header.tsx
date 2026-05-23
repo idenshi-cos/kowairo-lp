@@ -7,8 +7,8 @@ const navLinks = [
   { label: "特徴", href: "#features" },
   { label: "使い方", href: "#how-it-works" },
   { label: "導入効果", href: "#roi" },
-  { label: "料金", href: "#pricing" },
   { label: "よくある質問", href: "#faq" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
 export default function Header() {
@@ -45,10 +45,10 @@ export default function Header() {
           ))}
         </nav>
         <a
-          href="#trial"
+          href="#contact"
           className="hidden md:inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
         >
-          無料トライアル
+          導入相談する
         </a>
         <button
           className="md:hidden p-2 text-navy"
@@ -71,11 +71,11 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#trial"
+            href="#contact"
             className="block bg-teal text-white font-bold px-5 py-3 rounded-lg text-center hover:bg-teal-dark transition-colors mt-2"
             onClick={() => setIsOpen(false)}
           >
-            無料トライアル申込
+            導入相談する
           </a>
         </div>
       )}

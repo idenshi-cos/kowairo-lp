@@ -69,8 +69,8 @@ export default function HeroSection() {
           </div>
           <div className="w-px bg-gray-200" />
           <div>
-            <p className="text-5xl font-black text-mustard leading-none">2<span className="text-xl">週間</span></p>
-            <p className="text-body text-sm mt-1">無料トライアル</p>
+            <p className="text-5xl font-black text-mustard leading-none">即<span className="text-xl">日</span></p>
+            <p className="text-body text-sm mt-1">導入可能</p>
           </div>
         </div>
         <p className={`text-xs text-body/60 mt-5 ${item()}`} style={style(1000)}>

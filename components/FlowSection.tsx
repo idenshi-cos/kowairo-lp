@@ -5,14 +5,14 @@ const steps = [
     duration: "約30分",
   },
   {
-    title: "無料トライアル",
-    description: "2週間、実際の訪問現場でお試しいただけます。費用は一切かかりません。",
-    duration: "2週間",
+    title: "契約",
+    description: "ご状況に合わせた内容でご提案。納得いただいてから契約いただけます。",
+    duration: "最短1日",
   },
   {
-    title: "本格導入",
+    title: "即日導入",
     description: "導入設定はシンプル。既存システムはそのままで、すぐに全スタッフが使い始められます。",
-    duration: "最短1日",
+    duration: "当日〜",
   },
   {
     title: "運用サポート",
@@ -32,7 +32,7 @@ export default function FlowSection() {
             <span className="text-teal"> 流れ</span>
           </h2>
           <p className="section-subtitle">
-            デモから本導入まで、最短2週間。担当者が丁寧にサポートします。
+            ヒアリング・デモから即日導入まで。担当者が丁寧にサポートします。
           </p>
         </div>
 

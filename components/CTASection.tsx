@@ -1,5 +1,5 @@
 "use client";
-import { Mic, ArrowRight, Phone } from "lucide-react";
+import { MessageCircle, ArrowRight, Phone } from "lucide-react";
 import { useInView } from "@/app/hooks/useInView";
 
 export default function CTASection() {
@@ -15,33 +15,26 @@ export default function CTASection() {
         ref={ref as React.RefObject<HTMLDivElement>}
         className={`container-narrow relative z-10 text-center transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        <div className="inline-flex items-center gap-2 bg-white/20 text-white text-sm font-bold px-4 py-2 rounded-full mb-8">
-          <Mic size={14} />
-          <span>2週間 完全無料トライアル実施中</span>
-        </div>
-
         <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
-          まずは
-          <span className="text-yellow-300">無料</span>
-          で、
+          まずは、
           <br />
-          「話すだけ記録」を体験してください。
+          導入相談から始めましょう。
         </h2>
 
         <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-          電子カルテの入れ替えは不要。導入コストゼロ。
+          電子カルテの入れ替えは不要。既存システムはそのまま。
           <br />
-          2週間の無料トライアルで、現場の変化を実感してください。
+          ステーションの規模・状況に合わせて個別にご提案します。
         </p>
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a
-            href="mailto:info@idenshi.co.jp?subject=kowairo 無料トライアル申込"
+            href="mailto:info@idenshi.co.jp?subject=kowairo 導入相談"
             className="inline-flex items-center justify-center gap-2 bg-white text-teal font-black px-8 py-4 rounded-xl text-lg hover:bg-gray-50 transition-colors shadow-lg"
           >
-            <Mic size={20} />
-            2週間無料トライアル申込
+            <MessageCircle size={20} />
+            導入相談する
             <ArrowRight size={18} />
           </a>
           <a
@@ -55,7 +48,7 @@ export default function CTASection() {
 
         {/* Reassurance points */}
         <div className="flex flex-wrap justify-center gap-6 text-white/70 text-sm">
-          {["2週間完全無料", "クレジットカード不要", "いつでも解約可能", "既存システムはそのまま"].map((point) => (
+          {["導入費用0円", "既存システムはそのまま", "即日導入可能", "手厚い運用サポート"].map((point) => (
             <div key={point} className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-yellow-300" />
               {point}
