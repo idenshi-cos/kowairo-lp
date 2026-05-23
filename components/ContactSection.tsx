@@ -31,7 +31,7 @@ export default function ContactSection() {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: "590d7b9a-74b7-4072-a51a-3c8eec9de9f1",
+          access_key: "1f4fa5b5-d4c0-4604-87ca-4c0ef668abe5",
           subject: `【kowairo】導入相談：${form.station}`,
           from_name: form.name,
           name: form.name,
@@ -202,7 +202,7 @@ export default function ContactSection() {
               </button>
 
               <p className="text-center text-gray-400 text-xs">
-                送信後、2営業日以内に info@idenshi.co.jp よりご返信します。
+                送信後、2営業日以内に info@idenshi.net よりご返信します。
               </p>
             </form>
           )}
