@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Mic, ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircle, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
@@ -46,12 +46,13 @@ export default function HeroSection() {
 
         {/* CTA buttons */}
         <div className={`flex flex-col sm:flex-row gap-4 mb-12 ${item()}`} style={style(720)}>
-          <a href="#trial" className="btn-primary gap-2">
-            <Mic size={18} />
-            2週間無料トライアル申込
+          <a href="#contact" className="btn-primary gap-2">
+            <MessageCircle size={18} />
+            導入相談する
           </a>
-          <a href="#how-it-works" className="btn-secondary">
-            使い方を見る
+          <a href="#testimonials" className="btn-secondary gap-2">
+            <BookOpen size={18} />
+            事例を見る
           </a>
         </div>
 
