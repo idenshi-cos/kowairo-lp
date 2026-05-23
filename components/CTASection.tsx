@@ -1,5 +1,5 @@
 "use client";
-import { MessageCircle, ArrowRight, Phone } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 import { useInView } from "@/app/hooks/useInView";
 
 export default function CTASection() {
@@ -30,7 +30,7 @@ export default function CTASection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a
-            href="mailto:info@idenshi.net?subject=kowairo 導入相談"
+            href="#contact"
             className="inline-flex items-center justify-center gap-2 bg-white text-teal font-black px-8 py-4 rounded-xl text-lg hover:bg-gray-50 transition-colors shadow-lg"
           >
             <MessageCircle size={20} />
@@ -38,11 +38,10 @@ export default function CTASection() {
             <ArrowRight size={18} />
           </a>
           <a
-            href="mailto:info@idenshi.net?subject=kowairo デモ依頼"
+            href="#contact"
             className="inline-flex items-center justify-center gap-2 border-2 border-white/60 text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-colors"
           >
-            <Phone size={18} />
-            まずはデモを見る
+            フォームに進む
           </a>
         </div>
 
