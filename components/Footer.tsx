@@ -23,8 +23,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed max-w-xs text-body">
-              訪問看護の「付加価値を生み出さない時間」を<br />
-              なくし、スタッフを楽にする音声アシスタント。
+              現場の気づきを、記録・報告・主治医／ケアマネ<br />
+              共有に活かし、チームのケアにつなげるAIサービス。
             </p>
             <div className="mt-6">
               <Image

@@ -16,15 +16,15 @@ export default function CTASection() {
         className={`container-narrow relative z-10 text-center transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
-          まずは、
+          まずは無料デモで
           <br />
-          導入相談から始めましょう。
+          ご確認ください。
         </h2>
 
         <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-          電子カルテの入れ替えは不要。既存システムはそのまま。
+          現場の記録・報告・共有の流れに合わせて、
           <br />
-          ステーションの規模・状況に合わせて個別にご提案します。
+          kowairoの活用方法をご提案します。
         </p>
 
         {/* Scroll hint */}
@@ -37,7 +37,7 @@ export default function CTASection() {
 
         {/* Reassurance points */}
         <div className="flex flex-wrap justify-center gap-6 text-white/70 text-sm">
-          {["導入費用0円", "既存システムはそのまま", "即日導入可能", "手厚い運用サポート"].map((point) => (
+          {["無料デモ・ご相談は無料", "既存システムはそのまま", "スモールスタートも相談可", "手厚い運用サポート"].map((point) => (
             <div key={point} className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-yellow-300" />
               {point}
