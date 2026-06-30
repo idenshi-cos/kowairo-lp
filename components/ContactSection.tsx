@@ -13,12 +13,16 @@ export default function ContactSection() {
   const [form, setForm] = useState({
     name: "",
     station: "",
+    role: "",
     email: "",
     phone: "",
     message: "",
+    purpose: "無料デモ希望",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -32,19 +36,21 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: "1f4fa5b5-d4c0-4604-87ca-4c0ef668abe5",
-          subject: `【kowairo】導入相談：${form.station}`,
+          subject: `【kowairo】${form.purpose}：${form.station}`,
           from_name: form.name,
           name: form.name,
           station: form.station,
+          role: form.role || "未入力",
           email: form.email,
           phone: form.phone || "未入力",
+          purpose: form.purpose,
           message: form.message || "（本文なし）",
         }),
       });
       const data = await res.json();
       if (data.success) {
         setStatus("success");
-        setForm({ name: "", station: "", email: "", phone: "", message: "" });
+        setForm({ name: "", station: "", role: "", email: "", phone: "", message: "", purpose: "無料デモ希望" });
       } else {
         setStatus("error");
       }
@@ -112,10 +118,10 @@ export default function ContactSection() {
                 />
               </div>
 
-              {/* ステーション名 */}
+              {/* 事業所名 */}
               <div>
                 <label className="block text-sm font-bold text-navy mb-1.5">
-                  ステーション名 <span className="text-coral text-xs">必須</span>
+                  事業所名 <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="text"
@@ -124,6 +130,21 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="〇〇訪問看護ステーション"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                />
+              </div>
+
+              {/* 役職 */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  役職 <span className="text-gray-400 text-xs font-normal">任意</span>
+                </label>
+                <input
+                  type="text"
+                  name="role"
+                  value={form.role}
+                  onChange={handleChange}
+                  placeholder="管理者 / 看護師 / 理学療法士 など"
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
                 />
               </div>
@@ -174,6 +195,24 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* 希望内容 */}
+              <div>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  ご希望内容 <span className="text-coral text-xs">必須</span>
+                </label>
+                <select
+                  name="purpose"
+                  value={form.purpose}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                >
+                  <option value="無料デモ希望">無料デモを希望したい</option>
+                  <option value="資料希望">サービス資料がほしい</option>
+                  <option value="まずは相談したい">まずは相談したい</option>
+                </select>
+              </div>
+
               {/* Error */}
               {status === "error" && (
                 <div className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
@@ -196,7 +235,7 @@ export default function ContactSection() {
                 ) : (
                   <>
                     <MessageCircle size={18} />
-                    導入相談する
+                    無料デモ・導入相談をする
                   </>
                 )}
               </button>

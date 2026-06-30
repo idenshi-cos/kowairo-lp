@@ -4,78 +4,84 @@ import { useInView } from "@/app/hooks/useInView";
 const challenges = [
   {
     num: "01",
-    title: "帰宅後の記録に30分〜1時間かかっている",
-    description:
-      "訪問中は患者さんに集中できても、帰宅後の入力・月末のサマリ・報告書作成で毎日時間が消費されます。\n深夜まで記録が終わらない日も珍しくありません。",
-    accentColor: "#E5876B",
+    title: "利用者さんの生活や想いはわかっているのに、医師へうまく伝えきれない",
+    accentColor: "#4A90D9",
   },
   {
     num: "02",
-    title: "忙しくて「前回と同じ」でコピペしてしまう",
-    description:
-      "時間が足りず、記録が形式化しがちです。患者さんの小さな変化を書き残せず、ケアの質が知らないうちに低下していきます。",
-    accentColor: "#D4A03B",
+    title: "記録や報告に時間がかかり、共有がどうしても後回しになる",
+    accentColor: "#E5876B",
   },
   {
     num: "03",
-    title: "ケアマネへの報告がどうしても遅れてしまう",
-    description:
-      "タイムリーな報告の大切さはわかっていても、記録作業に追われて連携が後手になりがちです。質の高い報告書が紹介増加につながる時代です。",
+    title: "ケアマネや主治医への連絡文を、毎回ゼロから考えるのが大変",
+    accentColor: "#D4A03B",
+  },
+  {
+    num: "04",
+    title: "ACPや看取りに大切な情報が、日々の会話の中で埋もれてしまう",
     accentColor: "#4A90D9",
+  },
+  {
+    num: "05",
+    title: "ステーションとして「丁寧に見ている価値」が、外部に伝わりにくい",
+    accentColor: "#E5876B",
   },
 ];
 
 export default function ChallengeSection() {
   const { ref: headRef, inView: headIn } = useInView();
   const { ref: listRef, inView: listIn } = useInView();
+  const { ref: noteRef, inView: noteIn } = useInView();
 
   return (
     <section id="challenge" className="section-padding bg-white">
       <div className="container-wide">
         <div
           ref={headRef as React.RefObject<HTMLDivElement>}
-          className={`mb-16 transition-all duration-700 ${headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-14 transition-all duration-700 ${headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <span className="section-label">CHALLENGE</span>
           <h2 className="section-title">
-            現場が疲弊する、<span className="text-coral">本当の理由</span>
+            こんなこと、<span className="text-coral">ありませんか？</span>
           </h2>
           <p className="section-subtitle">
-            「人手が足りない」だけではありません。記録業務が生み出す見えないコストが、スタッフと経営の両方を圧迫しています。
+            訪問看護師やリハビリ職は、利用者さんに一番近い場所で、医療情報だけでは拾いきれない大切な情報を日々見ています。
           </p>
         </div>
 
         <div
           ref={listRef as React.RefObject<HTMLDivElement>}
-          className="space-y-0 divide-y divide-gray-100"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           {challenges.map((item, i) => (
             <div
               key={item.title}
-              className={`flex flex-col md:flex-row items-start gap-8 py-10 transition-all duration-700 ${listIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${i * 120}ms` }}
+              className={`flex items-start gap-5 bg-cream rounded-2xl border border-gray-100 p-6 transition-all duration-700 ${listIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {/* Large number */}
-              <div className="flex-shrink-0 w-20">
-                <span
-                  className="text-7xl font-black leading-none"
-                  style={{ color: item.accentColor, opacity: 0.25 }}
-                >
-                  {item.num}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 pt-2">
-                <div
-                  className="w-6 h-0.5 mb-4"
-                  style={{ backgroundColor: item.accentColor }}
-                />
-                <h3 className="text-2xl font-black text-navy mb-3">{item.title}</h3>
-                <p className="text-body leading-relaxed whitespace-pre-line">{item.description}</p>
-              </div>
+              <span
+                className="text-4xl font-black leading-none flex-shrink-0"
+                style={{ color: item.accentColor, opacity: 0.3 }}
+              >
+                {item.num}
+              </span>
+              <p className="text-navy font-bold leading-relaxed pt-1">{item.title}</p>
             </div>
           ))}
+        </div>
+
+        {/* Supplementary message */}
+        <div
+          ref={noteRef as React.RefObject<HTMLDivElement>}
+          className={`mt-10 bg-teal/5 border border-teal/15 rounded-2xl px-7 py-6 transition-all duration-700 ${noteIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <p className="text-body leading-relaxed">
+            その情報が、主治医やケアマネジャーへ十分に届かないことがあります。
+            <br className="hidden md:block" />
+            <span className="text-navy font-bold">現場の気づきを、チームのケアへ。</span>
+            kowairoが、その橋渡しをします。
+          </p>
         </div>
 
         {/* Bridge */}

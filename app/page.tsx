@@ -5,10 +5,12 @@ import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ROISection from "@/components/ROISection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FounderSection from "@/components/FounderSection";
+import RecommendSection from "@/components/RecommendSection";
 import FlowSection from "@/components/FlowSection";
+import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import FounderSection from "@/components/FounderSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -48,8 +50,10 @@ export default function Home() {
         <Wave from={CREAM} to={WHITE} />
         <FounderSection />
         <Wave from={WHITE} to={CREAM} />
+        <RecommendSection />
         <FlowSection />
         <Wave from={CREAM} to={WHITE} />
+        <PricingSection />
         <FAQSection />
         <Wave from={WHITE} to={TEAL} />
         <CTASection />

@@ -22,25 +22,27 @@ export default function HeroSection() {
         {/* Tag */}
         <div className={item()} style={style(100)}>
           <div className="inline-flex items-center bg-teal/10 text-teal font-bold text-sm px-4 py-2 rounded-full w-fit mb-8">
-            医師開発 · 訪問看護専用 AI音声アシスタント
+            現役の訪問診療医が開発 · 訪問看護／リハビリ職のためのAI
           </div>
         </div>
 
         {/* Main headline */}
         <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-navy leading-[1.2] mb-6">
           <span className={`block ${item()}`} style={style(250)}>
-            話すだけで、
+            会話の中にある、
           </span>
           <span className={`block ${item()}`} style={style(420)}>
-            <span className="text-teal">記録が完成</span>する。
+            <span className="text-teal">「次のケア」</span>につながる情報を。
           </span>
         </h1>
 
         <div className={item()} style={style(580)}>
-          <p className="text-body text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
-            訪問中の会話をアプリで録音するだけ。<br />
-            AIが自動で訪問看護記録・報告書・サマリを下書き。<br />
-            今の電子カルテはそのままで使えます。
+          <p className="text-body text-lg md:text-xl leading-relaxed mb-4 max-w-lg">
+            訪問看護師・リハビリ職が持つ大切な生活情報を、<br />
+            記録・報告・主治医／ケアマネ共有に活かすAIサービス。
+          </p>
+          <p className="text-body/70 text-base leading-relaxed mb-10 max-w-lg">
+            話すだけで記録作成をサポート。日々の会話で得た生活情報を、次のケアにつながる共有へ。
           </p>
         </div>
 
@@ -48,11 +50,11 @@ export default function HeroSection() {
         <div className={`flex flex-col sm:flex-row gap-4 mb-12 ${item()}`} style={style(720)}>
           <a href="#contact" className="btn-primary gap-2">
             <MessageCircle size={18} />
-            導入相談する
+            無料デモ・導入相談をする
           </a>
-          <a href="#testimonials" className="btn-secondary gap-2">
+          <a href="#how-it-works" className="btn-secondary gap-2">
             <BookOpen size={18} />
-            事例を見る
+            活用イメージを見る
           </a>
         </div>
 
@@ -74,10 +76,10 @@ export default function HeroSection() {
           </div>
         </div>
         <p className={`text-xs text-body/60 mt-5 ${item()}`} style={style(1000)}>
-          代表取締役医師 宗 大貴 監修 — 訪問看護の現場から生まれたツール
+          現役の訪問診療医が、在宅医療の現場で感じてきたジレンマから開発しました。
         </p>
         <p className={`text-xs text-body/40 mt-1 ${item()}`} style={style(1100)}>
-          ※当社PoC実績（n=20人、3ヶ月）
+          ※記録時間の数値は当社PoC実績（n=20人、3ヶ月）
         </p>
 
       </div>

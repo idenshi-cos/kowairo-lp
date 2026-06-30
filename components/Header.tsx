@@ -4,9 +4,9 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "特徴", href: "#features" },
-  { label: "使い方", href: "#how-it-works" },
-  { label: "導入効果", href: "#roi" },
+  { label: "できること", href: "#features" },
+  { label: "活用イメージ", href: "#how-it-works" },
+  { label: "導入メリット", href: "#roi" },
   { label: "よくある質問", href: "#faq" },
   { label: "お問い合わせ", href: "#contact" },
 ];
@@ -48,7 +48,7 @@ export default function Header() {
           href="#contact"
           className="hidden md:inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
         >
-          導入相談する
+          無料デモ・相談
         </a>
         <button
           className="md:hidden p-2 text-navy"
@@ -75,7 +75,7 @@ export default function Header() {
             className="block bg-teal text-white font-bold px-5 py-3 rounded-lg text-center hover:bg-teal-dark transition-colors mt-2"
             onClick={() => setIsOpen(false)}
           >
-            導入相談する
+            無料デモ・相談
           </a>
         </div>
       )}
