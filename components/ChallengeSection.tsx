@@ -4,27 +4,27 @@ import { useInView } from "@/app/hooks/useInView";
 const challenges = [
   {
     num: "01",
-    title: "利用者さんの生活や想いはわかっているのに、医師へうまく伝えきれない",
+    title: "日々の記録や月末の報告書に、現場の時間が取られている",
     accentColor: "#4A90D9",
   },
   {
     num: "02",
-    title: "記録や報告に時間がかかり、共有がどうしても後回しになる",
+    title: "カルテ情報をFAXやチャット用に入力し直すのが面倒",
     accentColor: "#E5876B",
   },
   {
     num: "03",
-    title: "ケアマネや主治医への連絡文を、毎回ゼロから考えるのが大変",
+    title: "主治医・ケアマネへの報告文を考えるのに手間がかかる",
     accentColor: "#D4A03B",
   },
   {
     num: "04",
-    title: "ACPや看取りに大切な情報が、日々の会話の中で埋もれてしまう",
+    title: "訪問看護で見ている生活情報が、医師やケアマネに十分届いていない",
     accentColor: "#4A90D9",
   },
   {
     num: "05",
-    title: "ステーションとして「丁寧に見ている価値」が、外部に伝わりにくい",
+    title: "採用や利用者紹介において、他社との差別化に悩んでいる",
     accentColor: "#E5876B",
   },
 ];
@@ -46,7 +46,7 @@ export default function ChallengeSection() {
             こんなこと、<span className="text-coral">ありませんか？</span>
           </h2>
           <p className="section-subtitle">
-            訪問看護師やリハビリ職は、利用者さんに一番近い場所で、医療情報だけでは拾いきれない大切な情報を日々見ています。
+            訪問看護師やセラピストは、利用者さんに一番近い場所で、医療情報だけでは拾いきれない大切な情報を日々見ています。
           </p>
         </div>
 

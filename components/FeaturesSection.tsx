@@ -1,6 +1,24 @@
 "use client";
 import { useInView } from "@/app/hooks/useInView";
-import { Mic, ClipboardList, Share2 } from "lucide-react";
+import { Mic, ClipboardList, Share2, MousePointerClick, Smartphone, ShieldCheck } from "lucide-react";
+
+const points = [
+  {
+    icon: MousePointerClick,
+    title: "直感的な操作性",
+    description: "録音・停止のシンプル操作。ITが苦手な方でも初日から使えます。",
+  },
+  {
+    icon: Smartphone,
+    title: "どこでも利用可能",
+    description: "iPhone・iPadに対応。訪問先でも移動中でも、その場で記録できます。",
+  },
+  {
+    icon: ShieldCheck,
+    title: "安心のセキュリティ",
+    description: "国内サーバーで暗号化保管。医療情報ガイドラインに準拠した設計です。",
+  },
+];
 
 const features = [
   {
@@ -8,7 +26,7 @@ const features = [
     label: "RECORD",
     title: "会話・音声・メモから記録作成を支援",
     description:
-      "訪問中の会話やメモをもとに、日々の看護記録・リハビリ記録の作成をサポート。話すだけで、記録の下書きができあがります。",
+      "訪問中の会話やメモをもとに、日々の看護記録・月末報告書の作成をサポート。話すだけで、記録の下書きができあがります。",
     color: "#4A90D9",
   },
   {
@@ -24,7 +42,7 @@ const features = [
     label: "SHARE",
     title: "主治医・ケアマネへの共有文まで作成",
     description:
-      "報告・相談・情報共有に使える文章へ整え、主治医やケアマネジャーとの連携をスムーズに。伝えたい情報が、必要な人に届きます。",
+      "報告・相談に使える文章へ整え、FAX・チャット・MCSへの共有もスムーズに。記録した情報をそのまま活かせるので、二重入力も減らせます。",
     color: "#D4A03B",
   },
 ];
@@ -79,7 +97,29 @@ export default function FeaturesSection() {
           })}
         </div>
 
-        <p className="text-center text-body/60 text-sm mt-10">
+        {/* 3 points */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+          {points.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.title}
+                className={`flex items-start gap-4 bg-white/60 rounded-xl border border-gray-100 px-6 py-5 transition-all duration-700 ${cardsIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <span className="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center flex-shrink-0">
+                  <Icon size={20} className="text-teal" />
+                </span>
+                <div>
+                  <p className="text-navy font-bold text-sm mb-1">{p.title}</p>
+                  <p className="text-body text-xs leading-relaxed">{p.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="text-center text-body/60 text-sm mt-8">
           今お使いの電子カルテはそのまま。生成した記録はコピー＆ペーストで転記できます。
         </p>
       </div>

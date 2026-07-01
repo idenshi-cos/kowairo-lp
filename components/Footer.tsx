@@ -36,6 +36,11 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs mt-2 text-body/60">代表取締役医師：宗 大貴</p>
+            <div className="text-xs mt-4 text-body/60 space-y-0.5 not-italic">
+              <p>〒104-0033 東京都中央区新川2-10-1-1315</p>
+              <p>TEL：03-6555-2104</p>
+              <p>Mail：info@idenshi.net</p>
+            </div>
           </div>
           <nav className="flex flex-wrap gap-x-8 gap-y-3">
             {footerLinks.map((link) => (
