@@ -16,51 +16,12 @@ const testimonials = [
   },
 ];
 
-const clients = [
-  "のぞみ医療株式会社",
-  "株式会社エンスリー",
-  "株式会社TBEC-SS",
-  "株式会社ウェチャーアス",
-  "株式会社コアエイド",
-  "ファミリーナース西落合",
-];
-
 export default function TestimonialsSection() {
-  const { ref: marqueeRef, inView: marqueeIn } = useInView(0.1);
   const { ref: voiceRef, inView: voiceIn } = useInView();
 
   return (
     <section id="testimonials" className="section-padding bg-cream">
       <div className="container-wide">
-
-        {/* Marquee client strip */}
-        <div
-          ref={marqueeRef as React.RefObject<HTMLDivElement>}
-          className={`mb-20 transition-all duration-700 ${marqueeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <span className="section-label">CLIENTS</span>
-          <h2 className="section-title mb-8">
-            導入いただいている
-            <span className="text-teal"> 訪問看護ステーション</span>
-          </h2>
-
-          {/* Scrolling strip */}
-          <div className="relative overflow-hidden border-t border-b border-gray-200 py-5">
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
-            <div className="flex animate-marquee whitespace-nowrap">
-              {[...clients, ...clients].map((name, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-3 mx-8 text-navy font-bold text-sm"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0" />
-                  {name}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Testimonials list */}
         <div
