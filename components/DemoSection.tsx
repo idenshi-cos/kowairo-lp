@@ -63,25 +63,23 @@ export default function DemoSection() {
             </div>
           </div>
 
-          {/* Phone frame side */}
+          {/* Video side */}
           <div
             ref={phoneRef as React.RefObject<HTMLDivElement>}
-            className={`lg:flex-shrink-0 mx-auto transition-all duration-700 ${phoneIn ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-[0.98]"}`}
+            className={`lg:flex-1 w-full transition-all duration-700 ${phoneIn ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-[0.98]"}`}
           >
-            <div className="w-[270px] sm:w-[300px] rounded-[2.5rem] bg-black p-2.5 shadow-2xl ring-1 ring-white/10">
-              <div className="relative rounded-[1.9rem] overflow-hidden bg-black aspect-[9/19.5]">
-                <video
-                  className="w-full h-full object-contain block"
-                  controls
-                  playsInline
-                  preload="metadata"
-                >
-                  <source src="/demo/kowairo_demo_customer_v11.mp4" type="video/mp4" />
-                  お使いのブラウザは動画の再生に対応していません。
-                </video>
-              </div>
+            <div className="rounded-2xl overflow-hidden bg-black shadow-2xl ring-1 ring-white/10">
+              <video
+                className="w-full h-auto block bg-black"
+                controls
+                playsInline
+                preload="metadata"
+              >
+                <source src="/demo/kowairo_demo_customer_v11.mp4" type="video/mp4" />
+                お使いのブラウザは動画の再生に対応していません。
+              </video>
             </div>
-            <p className="text-white/50 text-xs text-center mt-5 max-w-[300px] mx-auto">
+            <p className="text-white/50 text-xs text-center mt-4">
               ※動画はイメージです。実際の画面・機能は開発により変更される場合があります。
             </p>
           </div>
