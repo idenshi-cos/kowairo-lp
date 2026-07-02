@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ChevronDown, MessageCircle, BookOpen } from "lucide-react";
+import { ChevronDown, MessageCircle, PlayCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
@@ -52,9 +52,9 @@ export default function HeroSection() {
             <MessageCircle size={18} />
             無料デモ・導入相談をする
           </a>
-          <a href="#how-it-works" className="btn-secondary gap-2">
-            <BookOpen size={18} />
-            活用イメージを見る
+          <a href="#demo" className="btn-secondary gap-2">
+            <PlayCircle size={18} />
+            デモ動画を見る
           </a>
         </div>
 
@@ -182,7 +182,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <a
-        href="#challenge"
+        href="#demo"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-body/50 hover:text-teal transition-colors"
       >
         <span className="text-xs mb-1">スクロール</span>

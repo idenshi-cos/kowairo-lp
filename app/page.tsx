@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ChallengeSection from "@/components/ChallengeSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
+import DemoSection from "@/components/DemoSection";
 import ROISection from "@/components/ROISection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FounderSection from "@/components/FounderSection";
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 const CREAM = "#FAF8F4";
 const WHITE = "#FFFFFF";
 const TEAL = "#4A90D9";
+const NAVY = "#1F2A44";
 
 function Wave({ from, to }: { from: string; to: string }) {
   return (
@@ -39,6 +41,8 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <DemoSection />
+        <Wave from={NAVY} to={WHITE} />
         <ChallengeSection />
         <Wave from={WHITE} to={CREAM} />
         <FeaturesSection />

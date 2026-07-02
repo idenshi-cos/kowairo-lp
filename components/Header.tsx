@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "できること", href: "#features" },
+  { label: "デモ動画", href: "#demo" },
   { label: "活用イメージ", href: "#how-it-works" },
   { label: "導入メリット", href: "#roi" },
   { label: "よくある質問", href: "#faq" },
