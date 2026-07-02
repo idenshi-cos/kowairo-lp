@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ChevronDown, MessageCircle, BookOpen } from "lucide-react";
+import { ChevronDown, MessageCircle, PlayCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
@@ -22,7 +22,7 @@ export default function HeroSection() {
         {/* Tag */}
         <div className={item()} style={style(100)}>
           <div className="inline-flex items-center bg-teal/10 text-teal font-bold text-sm px-4 py-2 rounded-full w-fit mb-8">
-            現役の訪問診療医が開発 · 訪問看護／リハビリ職のためのAI
+            訪問看護のための AI記録・多職種連携支援アプリ
           </div>
         </div>
 
@@ -38,8 +38,8 @@ export default function HeroSection() {
 
         <div className={item()} style={style(580)}>
           <p className="text-body text-lg md:text-xl leading-relaxed mb-4 max-w-lg">
-            訪問看護師・リハビリ職が持つ大切な生活情報を、<br />
-            記録・報告・主治医／ケアマネ共有に活かすAIサービス。
+            訪問看護師・セラピストが持つ大切な生活情報を、<br />
+            記録・報告・多職種共有に活かすAIサービス。
           </p>
           <p className="text-body/70 text-base leading-relaxed mb-10 max-w-lg">
             話すだけで記録作成をサポート。日々の会話で得た生活情報を、次のケアにつながる共有へ。
@@ -52,9 +52,9 @@ export default function HeroSection() {
             <MessageCircle size={18} />
             無料デモ・導入相談をする
           </a>
-          <a href="#how-it-works" className="btn-secondary gap-2">
-            <BookOpen size={18} />
-            活用イメージを見る
+          <a href="#demo" className="btn-secondary gap-2">
+            <PlayCircle size={18} />
+            デモ動画を見る
           </a>
         </div>
 
@@ -182,7 +182,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <a
-        href="#challenge"
+        href="#demo"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-body/50 hover:text-teal transition-colors"
       >
         <span className="text-xs mb-1">スクロール</span>
