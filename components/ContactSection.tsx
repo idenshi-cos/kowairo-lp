@@ -24,6 +24,7 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "loading") return;
     setStatus("loading");
 
     try {
@@ -42,7 +43,7 @@ export default function ContactSection() {
         }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (res.ok && data.success) {
         setStatus("success");
         setForm({ name: "", station: "", email: "", phone: "", message: "" });
       } else {
@@ -79,7 +80,7 @@ export default function ContactSection() {
           className={`max-w-2xl mx-auto transition-all duration-700 ${formIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {status === "success" ? (
-            <div className="bg-teal/5 border border-teal/20 rounded-3xl p-12 text-center">
+            <div role="status" className="bg-teal/5 border border-teal/20 rounded-3xl p-12 text-center">
               <CheckCircle size={48} className="text-teal mx-auto mb-4" />
               <h3 className="text-xl font-black text-navy mb-2">送信が完了しました</h3>
               <p className="text-body text-sm">
@@ -95,14 +96,16 @@ export default function ContactSection() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 md:p-10 space-y-5">
+            <form aria-busy={status === "loading"} onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 md:p-10 space-y-5">
               {/* 氏名 */}
               <div>
-                <label className="block text-sm font-bold text-navy mb-1.5">
+                <label htmlFor="contact-name" className="block text-sm font-bold text-navy mb-1.5">
                   お名前 <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="text"
+                  autoComplete="name"
+                  id="contact-name"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
@@ -114,11 +117,13 @@ export default function ContactSection() {
 
               {/* ステーション名 */}
               <div>
-                <label className="block text-sm font-bold text-navy mb-1.5">
+                <label htmlFor="contact-station" className="block text-sm font-bold text-navy mb-1.5">
                   ステーション名 <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="text"
+                  autoComplete="organization"
+                  id="contact-station"
                   name="station"
                   value={form.station}
                   onChange={handleChange}
@@ -130,11 +135,13 @@ export default function ContactSection() {
 
               {/* メール */}
               <div>
-                <label className="block text-sm font-bold text-navy mb-1.5">
+                <label htmlFor="contact-email" className="block text-sm font-bold text-navy mb-1.5">
                   メールアドレス <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="email"
+                  autoComplete="email"
+                  id="contact-email"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
@@ -146,11 +153,13 @@ export default function ContactSection() {
 
               {/* 電話番号 */}
               <div>
-                <label className="block text-sm font-bold text-navy mb-1.5">
+                <label htmlFor="contact-phone" className="block text-sm font-bold text-navy mb-1.5">
                   電話番号 <span className="text-gray-400 text-xs font-normal">任意</span>
                 </label>
                 <input
                   type="tel"
+                  autoComplete="tel"
+                  id="contact-phone"
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
@@ -161,10 +170,11 @@ export default function ContactSection() {
 
               {/* メッセージ */}
               <div>
-                <label className="block text-sm font-bold text-navy mb-1.5">
+                <label htmlFor="contact-message" className="block text-sm font-bold text-navy mb-1.5">
                   ご相談内容 <span className="text-gray-400 text-xs font-normal">任意</span>
                 </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   value={form.message}
                   onChange={handleChange}
@@ -176,7 +186,7 @@ export default function ContactSection() {
 
               {/* Error */}
               {status === "error" && (
-                <div className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
+                <div role="alert" className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
                   <AlertCircle size={16} className="flex-shrink-0" />
                   送信に失敗しました。時間をおいて再度お試しください。
                 </div>

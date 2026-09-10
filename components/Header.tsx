@@ -17,6 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -53,13 +54,15 @@ export default function Header() {
         <button
           className="md:hidden p-2 text-navy"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="メニュー"
+          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
+        <div id="mobile-navigation" className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
           {navLinks.map((link) => (
             <a
               key={link.href}

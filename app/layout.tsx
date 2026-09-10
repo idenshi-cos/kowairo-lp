@@ -12,7 +12,7 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "kowairo（コワイロ）| 訪問看護の音声アシスタント",
   description:
-    "「話す」が、そのまま「記録」になる。訪問看護の付加価値を生み出さない時間をなくし、スタッフを楽にする音声アシスタント。記録時間80%削減。",
+    "訪問看護の会話から、記録・報告書・サマリの下書きを作成するAI音声アシスタント。今の電子カルテと併用でき、記録づくりを支えます。",
   openGraph: {
     title: "kowairo（コワイロ）| 訪問看護の音声アシスタント",
     description:
@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSansJP.variable} font-sans antialiased bg-cream`}>
+        <a className="skip-link" href="#main-content">本文へスキップ</a>
         {children}
       </body>
     </html>

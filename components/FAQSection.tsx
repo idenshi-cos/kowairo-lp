@@ -56,6 +56,8 @@ export default function FAQSection() {
               <button
                 className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                aria-expanded={openIndex === i}
+                aria-controls={`faq-answer-${i}`}
               >
                 <span className="font-bold text-navy text-sm md:text-base leading-snug">
                   {faq.q}
@@ -68,7 +70,7 @@ export default function FAQSection() {
                 />
               </button>
               {openIndex === i && (
-                <div className="px-6 pb-5 border-t border-gray-100">
+                <div id={`faq-answer-${i}`} className="px-6 pb-5 border-t border-gray-100">
                   <div className="text-body text-sm leading-relaxed pt-4 space-y-3">
                     {faq.a.split("\n\n").map((para, j) => (
                       <p key={j}>{para}</p>

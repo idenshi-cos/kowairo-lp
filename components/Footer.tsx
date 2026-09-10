@@ -50,7 +50,7 @@ export default function Footer() {
           </nav>
         </div>
         <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-body/60">
-          <p>&copy; 2025 株式会社医伝士 All rights reserved.</p>
+          <p>&copy; 2026 株式会社医伝士 All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-teal transition-colors">プライバシーポリシー</a>
             <a href="#" className="hover:text-teal transition-colors">利用規約</a>
