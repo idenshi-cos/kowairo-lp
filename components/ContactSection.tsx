@@ -64,7 +64,7 @@ export default function ContactSection() {
         >
           <span className="section-label">CONTACT</span>
           <h2 className="section-title">
-            導入相談・
+            デモ・導入の
             <span className="text-teal">お問い合わせ</span>
           </h2>
           <p className="section-subtitle max-w-xl mx-auto">
@@ -96,11 +96,11 @@ export default function ContactSection() {
               </button>
             </div>
           ) : (
-            <form aria-busy={status === "loading"} onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 md:p-10 space-y-5">
+            <form aria-busy={status === "loading"} onSubmit={handleSubmit} className="bg-cream rounded-xl p-8 md:p-10 space-y-5">
               {/* 氏名 */}
               <div>
                 <label htmlFor="contact-name" className="block text-sm font-bold text-navy mb-1.5">
-                  お名前 <span className="text-coral text-xs">必須</span>
+                  お名前 <span className="text-teal text-xs">必須</span>
                 </label>
                 <input
                   type="text"
@@ -118,7 +118,7 @@ export default function ContactSection() {
               {/* ステーション名 */}
               <div>
                 <label htmlFor="contact-station" className="block text-sm font-bold text-navy mb-1.5">
-                  ステーション名 <span className="text-coral text-xs">必須</span>
+                  ステーション名 <span className="text-teal text-xs">必須</span>
                 </label>
                 <input
                   type="text"
@@ -136,7 +136,7 @@ export default function ContactSection() {
               {/* メール */}
               <div>
                 <label htmlFor="contact-email" className="block text-sm font-bold text-navy mb-1.5">
-                  メールアドレス <span className="text-coral text-xs">必須</span>
+                  メールアドレス <span className="text-teal text-xs">必須</span>
                 </label>
                 <input
                   type="email"
@@ -154,7 +154,7 @@ export default function ContactSection() {
               {/* 電話番号 */}
               <div>
                 <label htmlFor="contact-phone" className="block text-sm font-bold text-navy mb-1.5">
-                  電話番号 <span className="text-gray-400 text-xs font-normal">任意</span>
+                  電話番号 <span className="text-body text-xs font-normal">任意</span>
                 </label>
                 <input
                   type="tel"
@@ -171,7 +171,7 @@ export default function ContactSection() {
               {/* メッセージ */}
               <div>
                 <label htmlFor="contact-message" className="block text-sm font-bold text-navy mb-1.5">
-                  ご相談内容 <span className="text-gray-400 text-xs font-normal">任意</span>
+                  ご相談内容 <span className="text-body text-xs font-normal">任意</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -186,7 +186,7 @@ export default function ContactSection() {
 
               {/* Error */}
               {status === "error" && (
-                <div role="alert" className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
+                <div role="alert" className="flex items-center gap-2 text-teal text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
                   <AlertCircle size={16} className="flex-shrink-0" />
                   送信に失敗しました。時間をおいて再度お試しください。
                 </div>
@@ -211,7 +211,7 @@ export default function ContactSection() {
                 )}
               </button>
 
-              <p className="text-center text-gray-400 text-xs">
+              <p className="text-center text-body text-xs">
                 送信後、2営業日以内に info@idenshi.net よりご返信します。
               </p>
             </form>

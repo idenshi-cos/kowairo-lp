@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# kowairo LP
 
-## Getting Started
+訪問看護向けAIサービス「kowairo」のランディングページです。Next.js 14・React・Tailwind CSSを使用し、静的サイトとして公開します。
 
-First, run the development server:
+## 起動と確認
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開発用URLは http://localhost:3000 。公開用ファイルは `out/` に出力します。公開用ビルドを行う際は、開発サーバーを停止してから実行してください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 内容の参照元
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+「医伝士_会社紹介資料_2026_サービス込み.pptx」（ユーザー提供資料）に合わせ、深い青緑・白・水色のデザインへ変更しました。資料内の水彩素材、アプリ画面、代表写真を利用しています。
 
-## Learn More
+- サービス・背景情報・ACP・画面説明：資料3〜5ページ
+- 導入事例：6ページ。引用はヒアリング要旨、時間は管理者の実感値
+- 効果：7ページ。1件15分→3分。5,020件×12分＝1,004時間（換算値）
+- 試算例：5名×4件×20日＝400件。月80時間、時給2,000円換算で16万円相当
+- 料金・導入手順：8ページ。月4,000円／アカウント・税別、月契約（2026年9月時点）
+- FAQ・安全管理：9〜10ページ
+- 代表・理念・会社情報・外部評価：11〜14ページ。2026年10月の登壇は予定として記載
+- デモ案内：15ページ
 
-To learn more about Next.js, take a look at the following resources:
+## 公開
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+既存の `.github/workflows/` は main 更新時に GitHub Pages へ `out/` を公開します。独自ドメインは `public/CNAME` の kowairo.jp です。Sites の識別子は `.openai/hosting.json` に保持しています。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 問い合わせ
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+既存の Web3Forms 連携を継続利用しています。開発中の確認では実送信を行っていません。情報の取り扱いは安全管理セクション、利用規約は問い合わせ窓口へ案内しています。

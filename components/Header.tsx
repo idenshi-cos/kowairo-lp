@@ -8,7 +8,7 @@ const navLinks = [
   { label: "使い方", href: "#how-it-works" },
   { label: "導入効果", href: "#roi" },
   { label: "よくある質問", href: "#faq" },
-  { label: "お問い合わせ", href: "#contact" },
+  { label: "料金", href: "#pricing" },
 ];
 
 export default function Header() {
@@ -34,7 +34,7 @@ export default function Header() {
             className="object-contain"
           />
         </a>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -47,12 +47,12 @@ export default function Header() {
         </nav>
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
+          className="hidden lg:inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
         >
           導入相談する
         </a>
         <button
-          className="md:hidden p-2 text-navy"
+          className="lg:hidden p-2 text-navy"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={isOpen}
@@ -62,7 +62,7 @@ export default function Header() {
         </button>
       </div>
       {isOpen && (
-        <div id="mobile-navigation" className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
+        <div id="mobile-navigation" className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
           {navLinks.map((link) => (
             <a
               key={link.href}

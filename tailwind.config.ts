@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FAF8F4",
+        cream: "#F2F7F9",
         teal: {
-          DEFAULT: "#4A90D9",
-          light: "#6BAEE8",
-          dark: "#2B70B8",
+          DEFAULT: "#2E7D91",
+          light: "#9CCCD8",
+          dark: "#22506A",
         },
         coral: "#E5876B",
         mustard: "#D4A03B",
-        navy: "#1F2A44",
-        body: "#4A4A4A",
+        navy: "#17394B",
+        body: "#526B78",
       },
       fontFamily: {
         sans: ["var(--font-noto)", "Noto Sans JP", "sans-serif"],

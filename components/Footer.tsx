@@ -23,8 +23,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed max-w-xs text-body">
-              訪問看護の「付加価値を生み出さない時間」を<br />
-              なくし、スタッフを楽にする音声アシスタント。
+              訪問看護の記録づくりから、申し送りまで。<br />
+              在宅医療のAIインフラ「kowairo」。
             </p>
             <div className="mt-6">
               <Image
@@ -52,8 +52,8 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-body/60">
           <p>&copy; 2026 株式会社医伝士 All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-teal transition-colors">プライバシーポリシー</a>
-            <a href="#" className="hover:text-teal transition-colors">利用規約</a>
+            <a href="#security" className="hover:text-teal transition-colors">情報の取り扱い</a>
+            <a href="#contact" className="hover:text-teal transition-colors">利用規約のお問い合わせ</a>
           </div>
         </div>
       </div>
