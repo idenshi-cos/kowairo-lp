@@ -5,15 +5,17 @@ import { useInView } from "@/app/hooks/useInView";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function ContactSection() {
+export default function DoctorContactSection() {
   const { ref: headRef, inView: headIn } = useInView();
   const { ref: formRef, inView: formIn } = useInView();
 
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
     name: "",
-    station: "",
+    clinic: "",
     role: "",
+    fulltimeCount: "",
+    parttimeCount: "",
     email: "",
     phone: "",
     message: "",
@@ -28,7 +30,6 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (status === "loading") return;
     setStatus("loading");
 
     try {
@@ -37,11 +38,13 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: "1f4fa5b5-d4c0-4604-87ca-4c0ef668abe5",
-          subject: `【kowairo】${form.purpose}：${form.station}`,
+          subject: `【kowairo医師版】${form.purpose}：${form.clinic}`,
           from_name: form.name,
           name: form.name,
-          station: form.station,
+          clinic: form.clinic,
           role: form.role || "未入力",
+          fulltime_count: form.fulltimeCount || "未入力",
+          parttime_count: form.parttimeCount || "未入力",
           email: form.email,
           phone: form.phone || "未入力",
           purpose: form.purpose,
@@ -49,9 +52,19 @@ export default function ContactSection() {
         }),
       });
       const data = await res.json();
-      if (res.ok && data.success) {
+      if (data.success) {
         setStatus("success");
-        setForm({ name: "", station: "", role: "", email: "", phone: "", message: "", purpose: "無料デモ希望" });
+        setForm({
+          name: "",
+          clinic: "",
+          role: "",
+          fulltimeCount: "",
+          parttimeCount: "",
+          email: "",
+          phone: "",
+          message: "",
+          purpose: "無料デモ希望",
+        });
       } else {
         setStatus("error");
       }
@@ -74,7 +87,7 @@ export default function ContactSection() {
             <span className="text-teal">お問い合わせ</span>
           </h2>
           <p className="section-subtitle max-w-xl mx-auto">
-            ステーションの規模や状況に合わせて個別にご提案します。
+            クリニックの診療体制や連携先の状況に合わせて個別にご提案します。
             <br />
             まずはお気軽にご相談ください。通常2営業日以内にご返信します。
           </p>
@@ -86,7 +99,7 @@ export default function ContactSection() {
           className={`max-w-2xl mx-auto transition-all duration-700 ${formIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {status === "success" ? (
-            <div role="status" className="bg-teal/5 border border-teal/20 rounded-3xl p-12 text-center">
+            <div className="bg-teal/5 border border-teal/20 rounded-3xl p-12 text-center">
               <CheckCircle size={48} className="text-teal mx-auto mb-4" />
               <h3 className="text-xl font-black text-navy mb-2">送信が完了しました</h3>
               <p className="text-body text-sm">
@@ -102,15 +115,15 @@ export default function ContactSection() {
               </button>
             </div>
           ) : (
-            <form aria-busy={status === "loading"} onSubmit={handleSubmit} className="bg-cream rounded-xl p-8 md:p-10 space-y-5">
+            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 md:p-10 space-y-5">
               {/* 氏名 */}
               <div>
-                <label htmlFor="contact-name" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   お名前 <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="text"
-                  autoComplete="name" id="contact-name" name="name"
+                  name="name"
                   value={form.name}
                   onChange={handleChange}
                   required
@@ -119,45 +132,77 @@ export default function ContactSection() {
                 />
               </div>
 
-              {/* 事業所名 */}
+              {/* クリニック名 */}
               <div>
-                <label htmlFor="contact-station" className="block text-sm font-bold text-navy mb-1.5">
-                  事業所名 <span className="text-coral text-xs">必須</span>
+                <label className="block text-sm font-bold text-navy mb-1.5">
+                  クリニック名 <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="text"
-                  autoComplete="organization" id="contact-station" name="station"
-                  value={form.station}
+                  name="clinic"
+                  value={form.clinic}
                   onChange={handleChange}
                   required
-                  placeholder="〇〇訪問看護ステーション"
+                  placeholder="〇〇在宅クリニック"
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
                 />
               </div>
 
               {/* 役職 */}
               <div>
-                <label htmlFor="contact-role" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   役職 <span className="text-gray-400 text-xs font-normal">任意</span>
                 </label>
                 <input
                   type="text"
-                  autoComplete="organization-title" id="contact-role" name="role"
+                  name="role"
                   value={form.role}
                   onChange={handleChange}
-                  placeholder="管理者 / 看護師 / 理学療法士 など"
+                  placeholder="院長 / 医師 / 事務長 など"
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
                 />
               </div>
 
+              {/* 医師人数 */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold text-navy mb-1.5">
+                    常勤医師数 <span className="text-gray-400 text-xs font-normal">任意</span>
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    name="fulltimeCount"
+                    value={form.fulltimeCount}
+                    onChange={handleChange}
+                    placeholder="例：2"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-navy mb-1.5">
+                    非常勤医師数 <span className="text-gray-400 text-xs font-normal">任意</span>
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    name="parttimeCount"
+                    value={form.parttimeCount}
+                    onChange={handleChange}
+                    placeholder="例：1"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition"
+                  />
+                </div>
+              </div>
+
               {/* メール */}
               <div>
-                <label htmlFor="contact-email" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   メールアドレス <span className="text-coral text-xs">必須</span>
                 </label>
                 <input
                   type="email"
-                  autoComplete="email" id="contact-email" name="email"
+                  name="email"
                   value={form.email}
                   onChange={handleChange}
                   required
@@ -168,12 +213,12 @@ export default function ContactSection() {
 
               {/* 電話番号 */}
               <div>
-                <label htmlFor="contact-phone" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   電話番号 <span className="text-gray-400 text-xs font-normal">任意</span>
                 </label>
                 <input
                   type="tel"
-                  autoComplete="tel" id="contact-phone" name="phone"
+                  name="phone"
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="03-0000-0000"
@@ -183,26 +228,26 @@ export default function ContactSection() {
 
               {/* メッセージ */}
               <div>
-                <label htmlFor="contact-message" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   ご相談内容 <span className="text-gray-400 text-xs font-normal">任意</span>
                 </label>
                 <textarea
-                  id="contact-message" name="message"
+                  name="message"
                   value={form.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="気になること、現場の状況など何でもご記入ください。"
+                  placeholder="気になること、診療体制の状況など何でもご記入ください。"
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal bg-white transition resize-none"
                 />
               </div>
 
               {/* 希望内容 */}
               <div>
-                <label htmlFor="contact-purpose" className="block text-sm font-bold text-navy mb-1.5">
+                <label className="block text-sm font-bold text-navy mb-1.5">
                   ご希望内容 <span className="text-coral text-xs">必須</span>
                 </label>
                 <select
-                  id="contact-purpose" name="purpose"
+                  name="purpose"
                   value={form.purpose}
                   onChange={handleChange}
                   required
@@ -216,7 +261,7 @@ export default function ContactSection() {
 
               {/* Error */}
               {status === "error" && (
-                <div role="alert" className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
+                <div className="flex items-center gap-2 text-coral text-sm bg-coral/5 border border-coral/20 rounded-xl px-4 py-3">
                   <AlertCircle size={16} className="flex-shrink-0" />
                   送信に失敗しました。時間をおいて再度お試しください。
                 </div>

@@ -4,20 +4,20 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "特徴", href: "#features" },
-  { label: "紹介動画", href: "#demo" },
-  { label: "導入効果", href: "#roi" },
-  { label: "よくある質問", href: "#faq" },
+  { label: "できること", href: "#features" },
+  { label: "多職種連携", href: "#collaboration" },
+  { label: "導入の流れ", href: "#flow" },
   { label: "料金", href: "#pricing" },
+  { label: "よくある質問", href: "#faq" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
-export default function Header() {
+export default function DoctorHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled ? "bg-white border-gray-200 shadow-sm h-14" : "bg-cream/90 backdrop-blur-sm border-gray-100 h-16"}`}>
       <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
-        <a href="/">
+        <a href="/doctor" className="flex items-center gap-2">
           <Image
             src="/images/kowairo-logo.png"
             alt="kowairo"
@@ -33,8 +33,11 @@ export default function Header() {
             height={40}
             className="object-contain"
           />
+          <span className="hidden sm:inline-block text-[11px] font-bold text-teal bg-teal/10 rounded-full px-2.5 py-1 tracking-wide">
+            医師・クリニック向け
+          </span>
         </a>
-        <nav className="hidden lg:flex items-center gap-5">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -45,24 +48,27 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        <a
-          href="#contact"
-          className="hidden lg:inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
-        >
-          導入相談する
-        </a>
+        <div className="hidden md:flex items-center gap-4">
+          <a href="/" className="text-body/60 text-xs hover:text-teal transition-colors underline underline-offset-2">
+            訪問看護向けはこちら
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center bg-teal text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-teal-dark transition-colors"
+          >
+            無料デモ・相談
+          </a>
+        </div>
         <button
-          className="lg:hidden p-2 text-navy"
+          className="md:hidden p-2 text-navy"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
-          aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
+          aria-label="メニュー"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
       {isOpen && (
-        <div id="mobile-navigation" className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
+        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -74,11 +80,18 @@ export default function Header() {
             </a>
           ))}
           <a
+            href="/"
+            className="block text-body/60 text-sm py-2 underline underline-offset-2"
+            onClick={() => setIsOpen(false)}
+          >
+            訪問看護向けはこちら
+          </a>
+          <a
             href="#contact"
             className="block bg-teal text-white font-bold px-5 py-3 rounded-lg text-center hover:bg-teal-dark transition-colors mt-2"
             onClick={() => setIsOpen(false)}
           >
-            導入相談する
+            無料デモ・相談
           </a>
         </div>
       )}
