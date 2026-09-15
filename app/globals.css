@@ -21,8 +21,9 @@ p { overflow-wrap:anywhere; }
 .btn-secondary { @apply inline-flex items-center justify-center px-7 py-4 border-2 font-bold; border-color:var(--teal);color:var(--teal);border-radius:6px; }
 }
 .deck-hero { position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:white;padding-top:64px; }
-.deck-watercolor { position:absolute;z-index:-1;right:-140px;top:5%;width:660px;height:600px;background:url('/images/deck/image1.svg') center/contain no-repeat;opacity:.92; }
-.deck-hero-inner { padding:65px 0 62px;position:relative; }
+.deck-hero-inner { padding:65px 0 62px;position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:36px; }
+.deck-hero-devices { display:block;width:100%;height:auto;border-radius:16px; }
+@media(max-width:900px) { .deck-hero-inner { grid-template-columns:1fr;gap:32px; }.deck-hero-devices { max-width:480px;justify-self:center; } }
 .deck-eyebrow { color:var(--ice);font-size:14px;letter-spacing:.16em;font-weight:700; }
 .deck-wordmark { font-size:24px;font-weight:700;margin:5px 0 27px;letter-spacing:.025em; }
 .deck-wordmark span { font-size:12px;font-weight:400;color:#c9d7df;margin-left:14px; }
