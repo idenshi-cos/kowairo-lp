@@ -178,3 +178,23 @@ input,textarea { font-size:16px !important; }
 .doctor-page .btn-secondary { border-color:#4a90d9;color:#4a90d9;border-radius:12px;font-size:18px; }
 @media(max-width:767px) { .deck-demo-heading,.deck-benefits { grid-template-columns:1fr;gap:24px; }.deck-demo-heading .section-subtitle { margin-top:0; }.deck-video { max-height:65vh; }.deck-impact { padding:22px; } }
 
+
+/* Compact hero on phones and portrait tablets. */
+@media(max-width:900px) {
+  .deck-hero-inner { padding:28px 22px 30px;gap:0; }
+  .deck-hero-copy { display:contents; }
+  .deck-hero .deck-eyebrow { order:0;font-size:12px;letter-spacing:.08em; }
+  .deck-hero .deck-wordmark { order:1;margin:3px 0 14px;font-size:20px; }
+  .deck-hero h1 { order:2;font-size:clamp(28px,7.2vw,40px);line-height:1.45; }
+  .deck-hero-devices { order:3;width:min(64vw,260px);margin:12px auto 6px; }
+  .deck-hero-description { order:4;margin-top:8px;font-size:16px;line-height:1.8; }
+  .deck-hero-actions { order:5;margin-top:18px;gap:14px 22px; }
+  .deck-hero-note { order:6;margin-top:14px; }
+}
+@media(min-width:600px) and (max-width:900px) {
+  .deck-hero-inner { grid-template-columns:1.1fr 1fr;column-gap:24px;padding-top:36px;padding-bottom:36px; }
+  .deck-hero .deck-eyebrow,.deck-hero .deck-wordmark,.deck-hero h1,.deck-hero-description { grid-column:1; }
+  .deck-hero-devices { grid-column:2;grid-row:1 / 5;width:100%;max-width:320px;margin:0; }
+  .deck-hero-actions,.deck-hero-note { grid-column:1 / -1; }
+  .deck-hero h1 { font-size:clamp(26px,4vw,36px); }
+}
