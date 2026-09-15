@@ -20,9 +20,10 @@ p { overflow-wrap:anywhere; }
 .btn-primary:hover { background:var(--deep); }
 .btn-secondary { @apply inline-flex items-center justify-center px-7 py-4 border-2 font-bold; border-color:var(--teal);color:var(--teal);border-radius:6px; }
 }
-.deck-hero { position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:white;padding-top:64px; }
+.deck-hero { position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 80% 42%,rgba(125,207,224,.36),transparent 43%),radial-gradient(ellipse at 45% 110%,rgba(52,130,163,.3),transparent 58%),linear-gradient(120deg,#102b3d 0%,#17394b 46%,#28586c 100%);color:white;padding-top:64px; }
 .deck-hero-inner { padding:65px 0 62px;position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:36px; }
-.deck-hero-devices { display:block;width:100%;height:auto;border-radius:16px; }
+.deck-hero-devices { display:block;width:100%;height:auto;position:relative;filter:drop-shadow(0 22px 28px rgba(3,20,33,.22)); }
+.deck-hero::before { content:"";position:absolute;z-index:-1;width:760px;height:760px;right:-140px;top:-150px;border:1px solid rgba(194,235,244,.13);border-radius:50%;box-shadow:0 0 0 90px rgba(194,235,244,.035),0 0 0 180px rgba(194,235,244,.025);pointer-events:none; }
 @media(max-width:900px) { .deck-hero-inner { grid-template-columns:1fr;gap:32px; }.deck-hero-devices { max-width:480px;justify-self:center; } }
 .deck-eyebrow { color:var(--ice);font-size:14px;letter-spacing:.16em;font-weight:700; }
 .deck-wordmark { font-size:24px;font-weight:700;margin:5px 0 27px;letter-spacing:.025em; }
@@ -176,3 +177,4 @@ input,textarea { font-size:16px !important; }
 .doctor-page .btn-primary { background:#4a90d9;border-radius:12px;font-size:18px; }
 .doctor-page .btn-secondary { border-color:#4a90d9;color:#4a90d9;border-radius:12px;font-size:18px; }
 @media(max-width:767px) { .deck-demo-heading,.deck-benefits { grid-template-columns:1fr;gap:24px; }.deck-demo-heading .section-subtitle { margin-top:0; }.deck-video { max-height:65vh; }.deck-impact { padding:22px; } }
+
