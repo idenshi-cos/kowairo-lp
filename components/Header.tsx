@@ -23,7 +23,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled ? "bg-white border-gray-200 shadow-sm h-14" : "bg-cream/90 backdrop-blur-sm border-gray-100 h-16"}`}>
+    <header className={`idenshi-header fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled ? "bg-white border-gray-200 shadow-sm h-14" : "bg-cream/90 backdrop-blur-sm border-gray-100 h-16"}`}>
       <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
         <a href="/">
           <Image
@@ -85,3 +85,4 @@ export default function Header() {
     </header>
   );
 }
+
